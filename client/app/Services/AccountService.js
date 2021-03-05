@@ -2,6 +2,9 @@ import { ProxyState } from '../AppState.js'
 import { api } from './AxiosService.js'
 
 class AccountService {
+  constructor() {
+
+  }
   async getAccount() {
     try {
       const res = await api.get('/account')

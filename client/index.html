@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/style/main.css">
     <title>Tyrd</title>
 </head>
@@ -13,7 +16,7 @@
     <header>
         <nav class="navbar navbar-dark navbar-expand bg-dark text-light">
             <a class="navbar-brand" href="#">
-                <img src="assets/img/logo.png" width="45" height="45" alt="" loading="lazy">
+                <img src="assets/img/TYRD-App-Logo.png" width="55" height="55" alt="" loading="lazy">
                 <span class="ml-2">Tyrd</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -26,24 +29,41 @@
             </div>
             <div class="flex-grow-1 justify-content-end align-items-center d-flex" id="authstate"></div>
         </nav>
+
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-myProfile-tab" data-bs-toggle="tab"
+                    data-bs-target="#nav-myProfile" type="button" role="tab" aria-controls="nav-myProfile"
+                    aria-selected="true">My Profile</button>
+
+                <button class="nav-link" id="nav-conundrums-tab" data-bs-toggle="tab" data-bs-target="#nav-conundrums"
+                    type="button" role="tab" aria-controls="nav-conundrums" aria-selected="true">Conundrums</button>
+            </div>
+        </nav>
+
     </header>
-    <main class="container-fluid">
-        <div class="row my-3">
-            <div class="col-5">
-                <div class="card p-2 skeleton-loader">
-                    <div class="card-title p-2">
-                        <div class="d-flex align-items-center">
-                            <div class="skeleton-loader avatar"></div>
-                            <div class="skeleton-loader text mx-2"></div>
+    <main class="container-fluid tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-myProfile" role="tabpanel" aria-labelledby="nav-myProfile-tab">
+            <div class="row my-3">
+                <div class="col-5">
+                    <div class="card p-2 skeleton-loader">
+                        <div class="card-title p-2">
+                            <div class="d-flex align-items-center">
+                                <div class="skeleton-loader avatar"></div>
+                                <div class="skeleton-loader text mx-2"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body border-top">
-                        <div class="skeleton-loader text block"></div>
-                        <div class="skeleton-loader text block"></div>
-                        <div class="skeleton-loader text"></div>
+                        <div class="card-body border-top">
+                            <div class="skeleton-loader text block"></div>
+                            <div class="skeleton-loader text block"></div>
+                            <div class="skeleton-loader text"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="tab-pane fade mt-5" id="nav-conundrums" role="tabpanel" aria-labelledby="nav-conundrums-tab">
+            <h1>hello</h1>
         </div>
     </main>
     <footer class="container-fluid bg-dark text-light">
@@ -54,6 +74,10 @@
         </div>
     </footer>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.auth0.com/js/auth0-spa-js/1.11/auth0-spa-js.production.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jakeoverall/auth0provider-client/browser/AuthProvider.browser.js"></script>

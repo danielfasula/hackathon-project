@@ -1,6 +1,5 @@
 class PostsService {
   constructor() {
-    console.log("Posts Service");
   }
 }
 

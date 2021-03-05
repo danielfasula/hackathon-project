@@ -5,5 +5,6 @@ export default class Post {
     this.body = data.body
     this.completion = data.completion
     this.comments = data.comments
+    this.popular = data.popular || false
   }
 }

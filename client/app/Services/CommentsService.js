@@ -1,7 +1,6 @@
 
 class CommentsService {
   constructor() {
-    console.log("Comments Service");
   }
 }
 
