@@ -18,5 +18,8 @@ export default class CommentsController {
     }
     commentsService.createComment(newComment)
   }
+  deleteComment(id){
+    commentsService.deleteComment(id)
+  }
 
 }
