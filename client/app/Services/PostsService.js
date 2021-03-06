@@ -7,6 +7,14 @@ class PostsService {
 
   constructor() {
   }
+  async getPosts(){
+    try {
+      let res = await api.get("api/posts")
+      ProxyState.otherPosts = res.data.map(p=> new Post(p))
+    } catch (error) {
+
+    }
+  }
 
 
   async editPost(id) {

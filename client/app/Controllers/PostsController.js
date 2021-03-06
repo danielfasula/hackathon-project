@@ -1,10 +1,22 @@
 import { ProxyState } from '../AppState.js'
 import { postsService } from '../Services/PostsService.js'
 
+function _draw(){
+  let getPosts = document.getElementById("get-all-posts")
+  let posts = ProxyState.otherPosts
+  let template = ""
+  posts.forEach(p=> template+=p.Template)
+  getPosts.innerHTML = template
+}
+
 
 export default class PostsController {
   constructor() {
-
+    ProxyState.on("otherPosts",_draw)
+    this.getPosts()
+  }
+  getPosts(){
+    postsService.getPosts()
   }
   createPost(event, creatorId) {
     event.preventDefault()
