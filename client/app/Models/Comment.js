@@ -5,4 +5,10 @@ export default class Post {
     this.body = data.body
     this.votes = data.votes
   }
+  get Template() {
+    return /*html*/ `
+      <div>${this.body}</div>
+        `
+  }
 }
+
