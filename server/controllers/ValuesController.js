@@ -1,4 +1,5 @@
 import BaseController from '../utils/BaseController'
+// @ts-ignore
 import { Auth0Provider } from '@bcwdev/auth0provider'
 
 export class ValuesController extends BaseController {

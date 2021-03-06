@@ -1,4 +1,5 @@
 import SocketIO from 'socket.io'
+// @ts-ignore
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { logger } from '../utils/Logger'
 import { attachHandlers } from '../../Setup'
