@@ -12,7 +12,11 @@ class AppState extends EventEmitter {
   account = {}
 
   /** @type {Post[]} */
-  posts = []
+  myPosts = []
+
+  /** @type {Post[]} */
+
+  otherPosts = []
 
   /** @type {Comment[]} */
   comments = []
