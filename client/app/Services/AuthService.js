@@ -2,6 +2,8 @@ import { ProxyState } from '../AppState.js'
 import { audience, clientId, domain } from '../AuthConfig.js'
 import { api } from './AxiosService.js'
 import { accountService } from './AccountService.js'
+import { postsService } from './PostsService.js'
+import { commentsService } from './CommentsService.js'
 
 export const AuthService = Auth0Provider.initialize({
   domain,
@@ -16,8 +18,10 @@ export const AuthService = Auth0Provider.initialize({
   }
 })
 
-AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async() => {
+AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async () => {
   api.defaults.headers.authorization = AuthService.bearer
   ProxyState.user = AuthService.user
+  await postsService.getMyPosts()
   await accountService.getAccount()
+  await commentsService.getComments()
 })

@@ -1,4 +1,5 @@
 import { ProxyState } from '../AppState.js'
+import Account from '../Models/Account.js'
 import { api } from './AxiosService.js'
 
 class AccountService {
@@ -8,8 +9,8 @@ class AccountService {
   async getAccount() {
     try {
       const res = await api.get('/account')
-      ProxyState.account = res.data
-      console.log(res.data)
+      ProxyState.account = new Account(res.data)
+      console.log(ProxyState.account)
     } catch (err) {
       console.error(err)
     }

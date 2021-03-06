@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header" id="${this.id}">
+    <h5 class="mb-0">
+      <button id="edit-post" class="btn btn-link collapsed pr-4" data-toggle="collapse" data-target="#post-${this.id}"
+        aria-expanded="false" aria-controls="${this.id}">
+        ${this.description}
+      </button>
+      <button class="btn close mt-1 btn-info" onclick="app.postsController.editPost('${this.id}')">Edit</button>
+      <button class="btn btn-success close mt-1 mr-3" hidden id="submit-edit">Confirm</button>
+      <button class="close mt-1 mr-3"
+        onclick="app.postsController.deletePost('${this.id}')"><span>&times;</span></button>
+    </h5>
+  </div>
+  <div id="post-${this.id}" class="collapse" aria-labelledby="${this.id}" data-parent="#accordion">
+    <div class="card-body">
+      ${this.Comments}
+    </div>
+  </div>
+</div>

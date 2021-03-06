@@ -1,14 +1,12 @@
-export default class Post {
+export default class Comment {
   constructor(data) {
     this.id = data.id
     this.creatorId = data.creatorId
-    this.body = data.body
-    this.votes = data.votes
+    this.description = data.description
+    this.postId = data.postId
   }
   get Template() {
-    return /*html*/ `
-      <div>${this.body}</div>
-        `
+    return /*html*/ `<h3>${this.description}</h3>`
   }
 }
 

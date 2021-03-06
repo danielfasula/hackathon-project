@@ -1,20 +1,21 @@
 import { ProxyState } from '../AppState.js'
 
 export default class Profile {
-  constructor({ name, id, imgUrl }) {
+  constructor({ name, id, picture, bio }) {
     this.name = name
     this.id = id
-    this.imgUrl = imgUrl
+    this.bio = bio
+    this.picture = picture
   }
   get Template() {
-    return /*html*/`
-
-                <div class="col-12">
+    return /*html*/`<div class="col-12">
                     <div class="card p-2">
                         <div class="card-title p-2">
                             <div class="d-flex align-items-center">
-                                <div class="profile-id"><img src="${this.imgUrl}" alt=""></div>
-                                <div class="skeleton-loader text mx-2"></div>
+                                <div class="profile-id"><img src="${this.picture}" alt=""></div>
+                                <div>
+                                <h3>${this.bio}</h3>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body border-top">
@@ -26,7 +27,11 @@ export default class Profile {
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
+                        <div class="row">
+                        <div class="col-12">
                             ${this.MyPosts}
+                        </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -38,8 +43,7 @@ export default class Profile {
 
   get MyPosts() {
     let template = ''
-    let myPosts = ProxyState.myPosts.filter(p => p.id == this.id)
-
+    let myPosts = ProxyState.myPosts
     myPosts.forEach(p => template += p.Template)
     return template
   }
