@@ -9,7 +9,10 @@ import Profile from './Models/Profile.js'
 
 class AppState extends EventEmitter {
   user = {}
-  account = {}
+
+/** @type {Account} */
+
+  account = null
 
   /** @type {Post[]} */
   myPosts = []
@@ -24,9 +27,9 @@ class AppState extends EventEmitter {
   /** @type {Vote[]} */
   votes = []
 
-  /** @type {Profile[]} */
+  /** @type {Profile} */
 
-  profiles = []
+  profiles = null
 
 }
 

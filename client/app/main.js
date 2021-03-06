@@ -1,7 +1,7 @@
 import { AuthController } from "./Controllers/AuthController.js";
 import PostsController from "./Controllers/PostsController.js";
 import CommentsController from "./Controllers/CommentsController.js";
-import AccountController from "./Controllers/ProfilesController.js";
+import AccountController from "./Controllers/AccountController.js";
 import VotesController from './Controllers/VotesController.js'
 import ProfilesController from './Controllers/ProfilesController.js'
 
