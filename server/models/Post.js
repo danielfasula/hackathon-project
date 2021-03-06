@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
+import { dbContext } from '../db/DbContext'
 const Schema = mongoose.Schema
-const ObjectId = mongoose.SchemaTypes.ObjectId
 
 
 const Post = new Schema(
@@ -12,4 +12,11 @@ const Post = new Schema(
   { timestamps: true, toJSON: { virtuals: true } }
 )
 
+Post.pre("findOneAndRemove", async function (next) {
+  try {
+    await dbContext.Comment.deleteMany({ postId: this._conditions._id  })
+  } catch (error) {
+    next(error)
+  }
+})
 export default Post

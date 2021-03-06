@@ -1,11 +1,11 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { dbContext } from '../db/DbContext'
-import { commentsService } from '../services/CommentsService'
+import { votesService } from '../services/VotesService'
 import BaseController from '../utils/BaseController'
 
-export class CommentsController extends BaseController {
+export class VotesController extends BaseController {
   constructor() {
-    super('api/comments')
+    super('api/votes')
     this.router
       .get('', this.getAll)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
@@ -17,7 +17,7 @@ export class CommentsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      return res.send(await commentsService.find())
+      return res.send(await votesService.find())
     } catch (error) {
       next(error)
     }
@@ -25,16 +25,15 @@ export class CommentsController extends BaseController {
 
   async create(req, res, next) {
     try {
-      req.body.creatorId = req.userInfo.id
-      const comment = await commentsService.create(req.body)
-      res.send(await commentsService.find({_id: comment._id}))
+     req.body.creatorId = req.userInfo.id
+      res.send(await votesService.create(req.body))
     } catch (error) {
       next(error)
     }
   }
   async delete(req, res, next) {
     try {
-      res.send(await commentsService.delete(req.params.id, req.userInfo.id))
+      res.send(await votesService.delete(req.params.id, req.userInfo.id))
     } catch (error) {
       next(error)
     }
@@ -42,7 +41,7 @@ export class CommentsController extends BaseController {
   async edit(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      res.send(await commentsService.edit(req.params.id, req.userInfo.id, req.body))
+      res.send(await votesService.edit(req.params.id, req.userInfo.id, req.body))
     } catch (error) {
       next(error)
     }

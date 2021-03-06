@@ -11,7 +11,7 @@ class PostsService {
     return await dbContext.Post.create(body)
   }
   async delete(id, userId) {
-    const post = await dbContext.Post.findOneAndDelete({_id: id, creatorId: userId})
+    const post = await dbContext.Post.findOneAndRemove({_id: id, creatorId: userId})
     if (!post) {
       throw new BadRequest('You are NOT the CREATOR, or this is not the correct POST ID')
     }
