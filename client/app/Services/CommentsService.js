@@ -18,7 +18,7 @@ class CommentsService {
   async createComment(newComment) {
     try {
       const res = await api.post('api/comments', newComment)
-      ProxyState.comments = [...ProxyState.comments, new Comment(res.data)]
+      ProxyState.comments = [...ProxyState.comments, new Comment(res.data[0])]
       console.log(ProxyState.comments);
     } catch (error) {
       console.error(error)
