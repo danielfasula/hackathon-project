@@ -24,6 +24,14 @@ class CommentsService {
       console.error(error)
     }
   }
+  async deleteComment(id) {
+    try {
+      await api.delete('api/comments/' + id)
+      this.getComments()
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
 

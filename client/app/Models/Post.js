@@ -17,7 +17,7 @@ export default class Post {
                             <button id="editable-${this.id}"class="btn btn-link collapsed pr-4" data-toggle="collapse"
                               data-target="#post-${this.id}"
                                 aria-expanded="false" aria-controls="${this.id}" >
-                                ${this.description} 
+                                ${this.description}
                             </button>
                           <button class="btn close mt-1 btn-info" onclick="app.postsController.editPost('${this.id}')">Edit</button>
                           <button class="btn btn-success close mt-1 mr-3" onclick="app.postsController.confirmPost('${this.id}')" hidden id="confirm-${this.id}">Confirm</button>

@@ -7,6 +7,14 @@ class PostsService {
 
   constructor() {
   }
+  async getPosts(){
+    try {
+      let res = await api.get("api/posts")
+      ProxyState.otherPosts = res.data.map(p=> new Post(p))
+    } catch (error) {
+
+    }
+  }
 
 
   async editPost(id) {
@@ -28,7 +36,7 @@ class PostsService {
 
   async getMyPosts() {
     try {
-      const res = await api.get('api/posts')
+      const res = await api.get(`account/${ProxyState.account.id}/posts`)
       ProxyState.myPosts = res.data.map(rawPostData => new Post(rawPostData))
       console.log(ProxyState.myPosts);
     } catch (error) {
