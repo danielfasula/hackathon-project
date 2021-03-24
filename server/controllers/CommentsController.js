@@ -1,5 +1,4 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
-import { dbContext } from '../db/DbContext'
 import { commentsService } from '../services/CommentsService'
 import BaseController from '../utils/BaseController'
 
@@ -27,11 +26,12 @@ export class CommentsController extends BaseController {
     try {
       req.body.creatorId = req.userInfo.id
       const comment = await commentsService.create(req.body)
-      res.send(await commentsService.find({_id: comment._id}))
+      res.send(await commentsService.find({ _id: comment._id }))
     } catch (error) {
       next(error)
     }
   }
+
   async delete(req, res, next) {
     try {
       res.send(await commentsService.delete(req.params.id, req.userInfo.id))
@@ -39,6 +39,7 @@ export class CommentsController extends BaseController {
       next(error)
     }
   }
+
   async edit(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
@@ -47,5 +48,4 @@ export class CommentsController extends BaseController {
       next(error)
     }
   }
-
 }

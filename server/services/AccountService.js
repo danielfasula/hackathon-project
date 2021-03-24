@@ -1,7 +1,6 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 
-
 // Private Methods
 
 /**
@@ -55,7 +54,8 @@ class AccountService {
 
     }
   }
-   /**
+
+  /**
     * Returns a list user profiles from a query search of name or email likeness
     * limits to first 20 without offset
     * @param {string} str
@@ -115,13 +115,13 @@ class AccountService {
     )
     return account
   }
+
   async edit(id, userId, body) {
-    const account = await dbContext.Account.findOneAndUpdate({_id: id, creatorId: userId }, body, { new: true })
+    const account = await dbContext.Account.findOneAndUpdate({ _id: id, creatorId: userId }, body, { new: true })
     if (!account) {
       throw new BadRequest('You are NOT the CREATOR, or this is not the correct account ID')
     }
     return account
-    }
-
+  }
 }
 export const accountService = new AccountService()

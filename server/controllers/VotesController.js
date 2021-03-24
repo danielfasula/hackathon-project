@@ -1,5 +1,4 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
-import { dbContext } from '../db/DbContext'
 import { votesService } from '../services/VotesService'
 import BaseController from '../utils/BaseController'
 
@@ -25,12 +24,13 @@ export class VotesController extends BaseController {
 
   async create(req, res, next) {
     try {
-     req.body.creatorId = req.userInfo.id
+      req.body.creatorId = req.userInfo.id
       res.send(await votesService.create(req.body))
     } catch (error) {
       next(error)
     }
   }
+
   async delete(req, res, next) {
     try {
       res.send(await votesService.delete(req.params.id, req.userInfo.id))
@@ -38,6 +38,7 @@ export class VotesController extends BaseController {
       next(error)
     }
   }
+
   async edit(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
@@ -46,5 +47,4 @@ export class VotesController extends BaseController {
       next(error)
     }
   }
-
 }

@@ -1,6 +1,5 @@
 // @ts-ignore
 import { Auth0Provider } from '@bcwdev/auth0provider'
-import { dbContext } from '../db/DbContext'
 import { postsService } from '../services/PostsService'
 import { commentsService } from '../services/CommentsService'
 import BaseController from '../utils/BaseController'
@@ -28,12 +27,13 @@ export class PostsController extends BaseController {
 
   async create(req, res, next) {
     try {
-     req.body.creatorId = req.userInfo.id
+      req.body.creatorId = req.userInfo.id
       res.send(await postsService.create(req.body))
     } catch (error) {
       next(error)
     }
   }
+
   async delete(req, res, next) {
     try {
       res.send(await postsService.delete(req.params.id, req.userInfo.id))
@@ -50,12 +50,12 @@ export class PostsController extends BaseController {
       next(error)
     }
   }
+
   async getAllCommentsByPostId(req, res, next) {
     try {
-      res.send(await commentsService.find( {postId: req.params.id}))
+      res.send(await commentsService.find({ postId: req.params.id }))
     } catch (error) {
       next(error)
     }
   }
-
 }

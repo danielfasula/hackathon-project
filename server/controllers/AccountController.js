@@ -12,9 +12,7 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/:id/posts', this.getUserPosts)
       .put('/:id', this.edit)
-
   }
-
 
   async getUserAccount(req, res, next) {
     try {
@@ -24,9 +22,10 @@ export class AccountController extends BaseController {
       next(error)
     }
   }
+
   async getUserPosts(req, res, next) {
     try {
-      const posts = await postsService.find({creatorId: req.userInfo.id})
+      const posts = await postsService.find({ creatorId: req.userInfo.id })
       res.send(posts)
     } catch (error) {
       next(error)
@@ -40,8 +39,5 @@ export class AccountController extends BaseController {
     } catch (error) {
       next(error)
     }
-   }
-
-
-
+  }
 }
